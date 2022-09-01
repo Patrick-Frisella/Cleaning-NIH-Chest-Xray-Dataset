@@ -11,14 +11,12 @@ Negative  | Positive
 
 
 
-[//]: <> (fig label)
 
 
 
 
-# **Synopsis**
-[//]: <> (Info)
 
+## **Synopsis**
 ---
 
 Chest x-rays are a ubiquitous, low cost radiological modality used in hospitals, urgent care clinics,
@@ -42,6 +40,7 @@ Overall Image Quality:
 
 
 ### Design
+---
 The purpose of this experiment is to examine the effectiveness of an image classifier in cleaning
 the NIH dataset. A smaller, cleaner dataset was created from the original NIH data to train a CNN model,
 which will be used to clean a larger dataset. This larger dataset will be used to
