@@ -192,10 +192,10 @@ Restored model, accuracy: 90.62%
 
 ---
 When new images were fed into the classifier,
-it predicted the class 80%-85% correctly. It gave a similar amount for false negatives and false positives.
+it predicted the class 80%-90% correctly (n= 10). It gave a similar amount for false negatives and false positives.
 The performance of the "Filtered" data model improved greatly from the "Junk" dataset.
 It was slightly better than the "Clean" dataset, likely due to the "Filtered" dataset being larger than the "Clean"
-(15,000 images vs. 2,400 images,respectively). Upon further inspection, the same confounding issues
+(15,273 images vs. 1,853 images,respectively). Upon further inspection, the same confounding issues
 (with respect to image quality) were still present, which affected performance of the model. These are "real world"
 images with variability in quality
 based on the confounding attributes stated above. Creating a model to accurately predict the correct
