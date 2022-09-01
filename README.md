@@ -217,7 +217,6 @@ would take a multi-disciplinary team with ample domain knowledge and machine lea
 ### Links
 
 ---
-[GitHub_Project](https://github.com/Patrick-Frisella/Patrick-Frisella)
 
 [NIH_Dataset](https://www.kaggle.com/datasets/nih-chest-xrays/data)
 
