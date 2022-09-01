@@ -208,9 +208,9 @@ would take a multi-disciplinary team with ample domain knowledge and machine lea
 
 ---
 
-### This is not a medical device and not to be used for diagnostic or treatment of medical conditions.
+ This is not a medical device and not to be used for diagnostic or treatment of medical conditions.
 
-#### THIS IS AN ACADEMIC EXERCISE ONLY!
+ THIS IS AN ACADEMIC EXERCISE ONLY!
 
 
 ### Links
