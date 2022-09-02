@@ -1,5 +1,5 @@
 [//]: <> (title)
-# **Project: Cleaning NIH Chest X-ray Dataset Using A Trained Image Classifier**
+# **Cleaning NIH Chest X-ray Dataset Using A Trained Image Classifier**
 
 
 
