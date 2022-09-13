@@ -159,7 +159,7 @@ This age group tends to have "cleaner" appearing CXR with typically less confoun
 These images were re-interpreted in a general binary classification of positive and negative pulmonary disease instead
 of the specific classification/diagnosis in the original dataset. The new dataset was used
 to train the same model as the "Junk" data. It did train better although there was over-fitting due to the dataset size.
-Regularization techniques were tried with similar or worse results, and so were abandoned.
+
 
 ```Python
 loss, acc = Clean.model.evaluate(validation_generator, verbose=2)
