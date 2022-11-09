@@ -19,51 +19,40 @@ Negative  | Positive
 ## **Synopsis**
 ---
 
-Chest x-rays are a ubiquitous, low cost radiological modality used in hospitals, urgent care clinics,
-and other medical facility for initial examination of common acute and chronic medical complaints.
-The NIH Chest X-ray dataset consists of 112,120 images with 15 different classes/labels.
-These image labels were extracted from the original reports using natural language processing (NLP).
-This led to numerous errors in the dataset and resulted in a poor performing machine learning model.
+Data integrity is the foundation of a reliable prediction model. The phrase "garbage in, garbage out" best illustrates the performance of a model when using poor quality data.
+
+Chest x-rays are a ubiquitous, low cost radiological modality used in hospitals, urgent care clinics,and other medical facility for initial examination of common acute and chronic medical complaints. The NIH Chest X-ray dataset consists of 112,120 images with 15 different classes/labels. The image labels were extracted from the original medical reports using natural language processing (NLP). This led to numerous errors in the dataset and resulted in a poor performing models. In addition to labeling errors (finding labels, age, views, etc.), the dataset has other confounding attributes that make training a Convolutional Neural Network (CNN) model difficult.
 
 In addition to labeling errors (finding labels, age, views, etc.), the dataset has other confounding attributes that
 make training a Convolutional Neural Network (CNN) model difficult.
 These include:
 
-Artifacts:
-* Surgical clips, cosmetic piercings, leads, contrast dyes, lines, and catheters
-* Arthroplasties, other medical devices
+Aspects of the chest x-ray image that can confound the Convolutional Neural Network learning include:
+- Surgical clips, cosmetic piercings, leads, contrast dyes, lines, shields, and catheters
+- Arthroplasties, other medical devices
 
 Overall Image Quality:
-* Variation in technique quality
-* Portions of the image that are extrathoracic (area outside the chest)
+- Variation in technique quality
+- Portions of the image that are extrathoracic (area outside the chest)
 
+
+
+
+
+![fig caption](https://github.com/Patrick-Frisella/Patrick-Frisella/blob/main/1_u9GAvmHcjzksFS-dHxh_9Q.png)
+
+A. Example of better quality image with no artifacts or devices B. Diminished image quality, artifact and devices C. Catheter. Images from NIH dataset
 
 
 ### Design
 ---
-The purpose of this experiment is to examine the effectiveness of an image classifier in cleaning
-the NIH dataset. A smaller, cleaner dataset was created from the original NIH data to train a CNN model,
-which will be used to clean a larger dataset. This larger dataset will be used to
-train the same CNN. The new "Filtered" dataset will be examined and compared to the "Junk" dataset
-trained model.
+First, the dataset was explored. New image folders were created and standardized for: posteroanterior (PA) chest view, age, and finding labels. These folders were then examined and poor data integrity was confirmed by visual inspection. 
 
-First, new image folders were created standardized for: posteroanterior (PA) chest view, age, and finding labels.
-Two folders were created. Several folders were created
-with finding labels: "Infiltrate", "Pneumonia", and "Consolidation"; multiple categories were needed
-due to the lack of positive images in the overall dataset.
-These folders were explored and examined for integrity of findings
-(meaning, did the chest xray image have said findings). If the images were deemed to be labeled correctly, they were
-placed in a new folder, "Positive". The same was done for the finding label,
-"No Finding" and then placed in a folder, "Negative". Both were then used to create and new
-dataset folder, "Clean".
-Another dataset was created from the original dataset with the same parameters as above and were not inspected for
-integrity and as is.
-Images with the finding labels "No Finding" were placed in a folder, "Junk_negative". Another set with
-the "Infiltrate" label
-was placed in "Junk_positive".
+The dataset "Clean" was created using the age parameter of 20–40 years. This age group tends to have chest x-ray with typically better image quality which should make it easier for the model to learn. The images were re-interpreted into a binary classification of positive and negative pulmonary disease instead of the specific classification or diagnosis in the original dataset. Several folders were created with finding labels: "Infiltrate", "Pneumonia", and "Consolidation"; multiple categories were needed due to the lack of true positive images in the overall dataset. These folders were explored and examined for integrity of findings (meaning, did the chest x-ray image have said findings). If the images were deemed to be labeled correctly, they were placed in a new folder, "Positive". The same was done for the finding label "No Finding" and then placed in a folder, "Negative". Care was taken to appropriately include catheters, devices and shielding artifacts when available.
 
-These datasets were used to train a
-simple CNN model for binary classification of chest xray images using the TensorFlow library.
+The Junk dataset was created from the original dataset with the same parameters as above but were not inspected for integrity and used "as is". Images with the finding labels "No Finding" were placed in a folder, "Junk_negative". Another set with the "Infiltrate" label was placed in "Junk_positive".
+
+These datasets were used to train a simple CNN model for binary classification of chest x-ray images using the TensorFlow library.
 
 
 
@@ -154,12 +143,7 @@ Model, accuracy: 58.47%
 This result mirrored those by other investigators.
 
 #### "Clean" Dataset:
-The dataset "Clean" was created using the age parameter of 20-40 years.
-This age group tends to have "cleaner" appearing CXR with typically less confounding elements.
-These images were re-interpreted in a general binary classification of positive and negative pulmonary disease instead
-of the specific classification/diagnosis in the original dataset. The new dataset was used
-to train the same model as the "Junk" data. It did train better although there was over-fitting due to the dataset size.
-
+The new dataset was used to train the same model as the "Junk" data. It did train better although there was over-fitting due to the dataset size.
 
 ```Python
 loss, acc = Clean.model.evaluate(validation_generator, verbose=2)
@@ -175,7 +159,7 @@ Restored model, accuracy: 85.76%
 CXR with the labels of "Infiltrate" and "No Findings" (a file of 10,000 randomly selected images from the 39,000 images
 with this label and PA view) were run through the classifier and sorted in either a folder for "Positive" findings or
 "Negative" findings. This new dataset was used to train the same model as both "Clean" and "Junk".
-Even though the dataset is still not perfect, it  trained better than the "Clean" data model.
+Even though the dataset is still not perfect, the model outperformed the other dataset trained models.
 
 ``` Python
 loss, acc = Filtered.model.evaluate(validation_generator, verbose=2)
@@ -191,16 +175,9 @@ Restored model, accuracy: 90.62%
 ### Conclusion
 
 ---
-When new images were fed into the classifier,
-it predicted the class 80%-90% correctly (n= 10). It gave a similar amount for false negatives and false positives.
-The performance of the "Filtered" data model improved greatly from the "Junk" dataset.
-It was slightly better than the "Clean" dataset, likely due to the "Filtered" dataset being larger than the "Clean"
-(15,273 images vs. 1,853 images,respectively). Upon further inspection, the same confounding issues
-(with respect to image quality) were still present, which affected performance of the model. These are "real world"
-images with variability in quality
-based on the confounding attributes stated above. Creating a model to accurately predict the correct
-diagnosis with this dataset
-would take a multi-disciplinary team with ample domain knowledge and machine learning expertise.
+This is a simple approach to cleaning a poor integrity image dataset. The performance of the "Filtered" data model improved significantly from the "Junk" dataset. It was slightly better than the "Clean" dataset, likely due to the model training better with the larger "Filtered" dataset (15,273 images vs. 1,853 images,respectively). Upon further inspection, the same confounding issues (with respect to image quality) were still present. This h affected performance of the model when new unseen images (n = 10) were introduced (prediction accuracy varied when independently inspected). 
+
+These are "real world" images with variability in overall quality.  Building a model to accurately predict the correct diagnosis with this dataset would take a multi-disciplinary team with ample domain knowledge and machine learning expertise.
 
 
 
