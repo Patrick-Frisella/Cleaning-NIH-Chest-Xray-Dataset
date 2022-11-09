@@ -6,7 +6,7 @@
 
 Negative  | Positive
 ------------- | -------------
-![fig caption](https://github.com/Patrick-Frisella/Patrick-Frisella/blob/main/2.png)  | ![fig caption](https://github.com/Patrick-Frisella/Patrick-Frisella/blob/main/4.png)
+![fig 1](https://github.com/Patrick-Frisella/Patrick-Frisella/blob/main/2.png)  | ![fig caption](https://github.com/Patrick-Frisella/Patrick-Frisella/blob/main/4.png)
 
 
 
@@ -39,9 +39,10 @@ Overall Image Quality:
 
 
 
-![fig caption](https://github.com/Patrick-Frisella/Patrick-Frisella/blob/main/1_u9GAvmHcjzksFS-dHxh_9Q.png)
+![fig 2](https://github.com/Patrick-Frisella/Patrick-Frisella/blob/main/1_u9GAvmHcjzksFS-dHxh_9Q.png)
+<figcaption align = "center"><b><sub>A. Example of better quality image with no artifacts or devices B. Diminished image quality, artifact and devices C. Catheter. Images from NIH dataset</sup></b></figcaption><b> 
 
-A. Example of better quality image with no artifacts or devices B. Diminished image quality, artifact and devices C. Catheter. Images from NIH dataset
+
 
 
 ### Design
