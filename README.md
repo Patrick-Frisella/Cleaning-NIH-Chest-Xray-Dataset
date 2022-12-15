@@ -157,7 +157,7 @@ Restored model, accuracy: 85.76%
 
 
 #### "Filtered" Dataset:
-CXR with the labels of "Infiltrate" and "No Findings" (a file of 10,000 randomly selected images from the 39,000 images
+CXR with the labels of "Infiltrate" and "No Findings" (a file of 15,273 images randomly selected images from the 39,000 images
 with this label and PA view) were run through the classifier and sorted in either a folder for "Positive" findings or
 "Negative" findings. This new dataset was used to train the same model as both "Clean" and "Junk".
 Even though the dataset is still not perfect, the model outperformed the other dataset trained models.
