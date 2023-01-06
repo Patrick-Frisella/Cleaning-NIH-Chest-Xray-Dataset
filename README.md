@@ -176,7 +176,7 @@ Restored model, accuracy: 90.62%
 ### Conclusion
 
 ---
-This is a simple approach to cleaning a poor integrity image dataset. The performance of the "Filtered" data model improved significantly from the "Junk" dataset. It was slightly better than the "Clean" dataset, likely due to the model training better with the larger "Filtered" dataset (1,853 images vs. 15,273 images, respectively). Upon further inspection, the same confounding issues (with respect to image quality) were still present. This h affected performance of the model when new unseen images (n = 10) were introduced (prediction accuracy varied when independently inspected). 
+This is a simple approach to cleaning a poor integrity image dataset. The performance of the "Filtered" data model improved significantly from the "Junk" dataset. It was slightly better than the "Clean" dataset, likely due to the model training better with the larger "Filtered" dataset (1,853 images vs. 15,273 images, respectively). Upon further inspection, the same confounding issues (with respect to image quality) were still present. This affected performance of the model when new unseen images (n = 10) were introduced (prediction accuracy varied when independently inspected). 
 
 These are "real world" images with variability in overall quality.  Building a model to accurately predict the correct diagnosis with this dataset would take a multi-disciplinary team with ample domain knowledge and machine learning expertise.
 
